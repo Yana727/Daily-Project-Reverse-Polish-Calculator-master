@@ -1,52 +1,56 @@
 using System;
+using System.Collections.Generic;
+using System.Linq; 
+
 
 namespace Daily_Project_Reverse_Polish_Calculator
 {
     public class ReversePolishCalc
     {
 
-        // You'll need a variable here to keep track of the top of the stack
-        public string TopOfStack {get; set;}
-
         // The array of the input string split up
         private String[] tokens;
 
         // The stack
-        private String[] stack;
+        private Stack<double> stack = new Stack<double>();
 
         public double Calculate(String input)
         {
 
             // 1. Use the String split method to split the string into tokens at the commas
-            tokens = input.Split(','); 
+            tokens = input.Split(',');
 
-            // 2. Allocate a stack as big as the number of tokens
-            stack = ... ????
-    
-        // 3. write the algorithm
-            for (int i = 0; i < tokens.Length; ++i)
-            {
-                // calls to push() and pop() and do the math here
-                
+            // 3. write the algorithm
+            foreach (var item in tokens)
+            { //peek??? 
+                if (item == "+")
+                {
+                    var a = stack.Pop();
+                    var b = stack.Pop();
+                    var result = b + a;
+                    var realResult = result;
+                    stack.Push(realResult);
+                }
+                if (item == "operation")
+                {
+                   utilize the previous two numbers with that operation 
+                   and return the asnwer 
+                }
+
             }
 
             // 4. return the result
-            return pop();
+            return stack.Pop();
         }
 
-        private void Push(String number)
+        private Stack<double> GetStack1()
         {
-            // push on the stack
+            return stack;
         }
 
-        private void Push(double d)
+        private Stack<double> GetStack()
         {
-            // change the double to a string and then push it on the stack
-        }
-
-        private double Pop()
-        {
-            // remove the string from the top of the stack and convert it to a double and return it
+            return stack;
         }
     }
 }
