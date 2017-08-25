@@ -22,7 +22,7 @@ namespace Daily_Project_Reverse_Polish_Calculator
 
             // 3. write the algorithm
             foreach (var item in tokens)
-            { //peek??? 
+            { 
                 if (item == "+")
                 {
                     var a = stack.Pop();
@@ -30,11 +30,34 @@ namespace Daily_Project_Reverse_Polish_Calculator
                     var result = b + a;
                     var realResult = result;
                     stack.Push(realResult);
-                }
-                if (item == "operation")
+                } else 
+                if (item == "-")
                 {
-                   utilize the previous two numbers with that operation 
-                   and return the asnwer 
+                   var a = stack.Pop(); 
+                   var b = stack.Pop(); 
+                   var result = b - a; 
+                   var realResult = result; 
+                   stack.Push(realResult); 
+                } else 
+                if (item == "*")
+                {
+                   var a = stack.Pop(); 
+                   var b = stack.Pop(); 
+                   var result = b * a; 
+                   var realResult = result; 
+                   stack.Push(realResult); 
+                } else 
+                if (item == "/")
+                {
+                   var a = stack.Pop(); 
+                   var b = stack.Pop(); 
+                   var result = b / a; 
+                   var realResult = result; 
+                   stack.Push(realResult); 
+                } 
+                else 
+                 {
+                  stack.Push(Convert.ToDouble(item)); 
                 }
 
             }
